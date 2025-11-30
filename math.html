@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学挑战 - 数字游戏合集</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">← 返回主页</a>
+    
+    <div class="container">
+        <header>
+            <h1>数学挑战</h1>
+            <p>测试你的计算能力</p>
+        </header>
+        
+        <div class="game-section active">
+            <div class="game-header">
+                <h2>数学挑战</h2>
+                <div class="game-controls">
+                    <button id="new-math">新题目</button>
+                    <button id="check-math">检查答案</button>
+                </div>
+            </div>
+            <div class="math-challenge">
+                <div id="math-problem" class="problem-display"></div>
+                <div class="answer-input">
+                    <input type="number" id="math-answer" placeholder="输入答案">
+                    <button id="submit-math">提交</button>
+                </div>
+                <div class="score-display">
+                    <p>得分: <span id="math-score">0</span></p>
+                    <p>正确: <span id="math-correct">0</span>/<span id="math-total">0</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="math.js"></script>
+</body>
+</html>
