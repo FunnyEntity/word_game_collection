@@ -10,7 +10,7 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            padding: 10px 20px;
+            padding: 12px 20px;
             background: rgba(255, 255, 255, 0.2);
             color: white;
             border: none;
@@ -19,10 +19,98 @@
             text-decoration: none;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            font-size: 1rem;
+            z-index: 1000;
         }
         
         .back-btn:hover {
             background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* 手机端数字键盘 */
+        .number-pad {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .number-btn {
+            aspect-ratio: 1;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            background: white;
+            color: #667eea;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .number-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .number-btn.clear {
+            grid-column: span 2;
+            background: #ff6b6b;
+            color: white;
+            border-color: #ff6b6b;
+        }
+
+        .number-btn.clear:hover {
+            background: #ff5252;
+        }
+
+        .number-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* 触摸优化 */
+        .sudoku-cell {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        /* 手机端优化 */
+        @media (max-width: 768px) {
+            .back-btn {
+                top: 10px;
+                left: 10px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            .number-pad {
+                max-width: 280px;
+                gap: 6px;
+                padding: 12px;
+            }
+
+            .number-btn {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .number-pad {
+                max-width: 250px;
+                gap: 4px;
+                padding: 10px;
+            }
+
+            .number-btn {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -50,6 +138,21 @@
                 </div>
             </div>
             <div class="game-board" id="sudoku-board"></div>
+            
+            <!-- 手机端数字键盘 -->
+            <div class="number-pad" id="number-pad">
+                <button class="number-btn" data-number="1">1</button>
+                <button class="number-btn" data-number="2">2</button>
+                <button class="number-btn" data-number="3">3</button>
+                <button class="number-btn" data-number="4">4</button>
+                <button class="number-btn" data-number="5">5</button>
+                <button class="number-btn" data-number="6">6</button>
+                <button class="number-btn" data-number="7">7</button>
+                <button class="number-btn" data-number="8">8</button>
+                <button class="number-btn" data-number="9">9</button>
+                <button class="number-btn clear" data-number="0">清除</button>
+            </div>
+            
             <div class="game-info">
                 <p id="sudoku-status">请开始游戏</p>
                 <p id="sudoku-timer">时间: 00:00</p>

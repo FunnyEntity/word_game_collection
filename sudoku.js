@@ -25,8 +25,56 @@ function initializeSudoku() {
     solveBtn.addEventListener('click', showSudokuSolution);
     difficultySelect.addEventListener('change', generateSudoku);
     
+    // 初始化数字键盘
+    initializeNumberPad();
+    
     // 初始生成数独
     generateSudoku();
+}
+
+// 初始化数字键盘
+function initializeNumberPad() {
+    const numberPad = document.getElementById('number-pad');
+    numberPad.addEventListener('click', handleNumberPadClick);
+}
+
+// 处理数字键盘点击
+function handleNumberPadClick(event) {
+    if (!sudokuState.selectedCell) {
+        updateSudokuStatus('请先选择一个单元格');
+        return;
+    }
+    
+    const button = event.target.closest('.number-btn');
+    if (!button) return;
+    
+    const number = parseInt(button.dataset.number);
+    const { row, col } = sudokuState.selectedCell;
+    
+    if (number === 0) {
+        // 清除单元格
+        sudokuState.board[row][col] = 0;
+        const cell = document.querySelector(`.sudoku-cell[data-row="${row}"][data-col="${col}"]`);
+        cell.textContent = '';
+        cell.classList.remove('error');
+    } else if (number >= 1 && number <= 9) {
+        // 输入数字
+        sudokuState.board[row][col] = number;
+        
+        // 更新显示
+        const cell = document.querySelector(`.sudoku-cell[data-row="${row}"][data-col="${col}"]`);
+        cell.textContent = number;
+        
+        // 检查是否正确
+        if (number !== sudokuState.solution[row][col]) {
+            cell.classList.add('error');
+        } else {
+            cell.classList.remove('error');
+        }
+        
+        // 检查是否完成
+        checkSudokuCompletion();
+    }
 }
 
 function generateSudoku() {
