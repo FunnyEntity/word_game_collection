@@ -27,7 +27,7 @@
 ### 本地运行
 1. 克隆项目到本地
 ```bash
-git clone https://github.com/your-username/word-game-collection.git
+git clone https://funnyentity.github.io/word_game_collection/
 ```
 
 2. 打开 `index.html` 文件
@@ -40,7 +40,7 @@ open index.html
 1. 将项目推送到GitHub仓库
 2. 在仓库设置中启用 GitHub Pages
 3. 选择部署分支（通常是 main 或 gh-pages）
-4. 访问 `https://your-username.github.io/word-game-collection`
+4. 访问 `https://funnyentity.github.io/word_game_collection/`
 
 ## 📁 项目结构
 
@@ -94,3 +94,4 @@ MIT License - 详见 [LICENSE](LICENSE) 文件
 ---
 
 **享受游戏的乐趣！** 🎉
+
